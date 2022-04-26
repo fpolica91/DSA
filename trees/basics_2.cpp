@@ -49,6 +49,27 @@ void levelOrderTraversal(TreeNode *root)
   }
 }
 // this block is for level order traversal using queue
+void levelOrderTraversalUsingQueue(TreeNode *root)
+{
+  queue<TreeNode *> q;
+  q.push(root);
+
+  while (!q.empty())
+  {
+    TreeNode *current = q.front();
+    q.pop();
+
+    cout << current->data << " ";
+    if (current->left != NULL)
+    {
+      q.push(current->left);
+    }
+    if (current->right != NULL)
+    {
+      q.push(current->right);
+    }
+  }
+}
 
 void printNodesAtKthLevel(TreeNode *root, int k, int curr)
 {
@@ -73,7 +94,7 @@ int main()
   // printNodesAtKthLevel(root1, 2, 0);
   cout << endl;
   cout << "level order traversal naive method " << endl;
-  levelOrderTraversal(root1);
+  levelOrderTraversalUsingQueue(root1);
   cout << endl;
 
   return 0;
