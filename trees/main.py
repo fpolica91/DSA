@@ -1,5 +1,4 @@
-from re import L
-
+from collections import deque
 
 class Node:
   def __init__(self, value):
@@ -34,6 +33,18 @@ def max_in_tree(root):
   return max(max_in_left, max_in_right, root.value)
 
 
+def traverse(current):
+  root = current
+  stack = deque()
+  stack.appendleft(root)
+  while root is not None or len(stack) > 0:
+    while root is not None:
+      stack.appendleft(root)
+      root = root.left
+    root = stack.popleft()
+    print(root.value)
+    root = root.right
+
   
 
 
@@ -46,6 +57,7 @@ if __name__ == "__main__":
   node.left.right = Node(5)
   node.right.left = Node(6)
   node.right.right = Node(7)
-  print(countNodes(node))
-  print("The greatest value in the tree is",max_in_tree(node))
+  # print(countNodes(node))
+  # print("The greatest value in the tree is",max_in_tree(node))
+  traverse(node)
 
