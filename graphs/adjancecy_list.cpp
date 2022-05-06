@@ -36,3 +36,4 @@ int main()
   add_edge_directed(adj, 3, 2);
   print_adj_list(adj);
 }
+
